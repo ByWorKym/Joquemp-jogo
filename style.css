@@ -1,0 +1,205 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: #C8E4F7;
+}
+
+/* Estilos gerais do menu */
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  padding: 0 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+}
+
+.navegacao {
+  display: flex;
+}
+
+.navegacao a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.navegacao a:hover {
+  color: #007BFF;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.acessibilidade {
+  display: flex;
+}
+
+.acessibilidade button {
+  margin-left: 10px;
+  padding: 8px;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.acessibilidade button:hover {
+  background-color: #bbb;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .menu {
+      flex-direction: column;
+      height: auto;
+      padding: 10px;
+  }
+
+  .navegacao {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .navegacao a {
+      margin: 10px 0;
+      font-size: 16px;
+  }
+
+  .acessibilidade {
+      margin-top: 10px;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .acessibilidade button {
+      margin-bottom: 10px;
+  }
+
+  .logo img {
+      height: 40px;
+  }
+}
+
+.game-container {
+  width: 100%;
+  max-width: 480px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.game-container > .players-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.game-container > .players-container > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.game-container > .players-container > .player {
+  transform: rotatey(180deg);
+}
+
+.game-container > .players-container .option {
+  width: 100%;
+  max-width: 150px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.game-container > .players-container > .player > .option {
+  cursor: pointer;
+}
+
+.game-container > .players-container > .player > .option:hover {
+  opacity: 1;
+}
+
+.game-container > .players-container .option > img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.game-container > .result-container {
+  padding: 16px;
+  text-align: center;
+  font-size: 22px;
+  color: rgb(0, 0, 0);
+}
+
+/* Estilos para o modal */
+.modal {
+  display: none; /* Oculto por padrão */
+  position: fixed;
+  z-index: 1001; /* Fica acima de outros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Largura total */
+  height: 100%; /* Altura total */
+  overflow: auto; /* Permite rolagem se necessário */
+  background-color: rgb(0, 0, 0); /* Fundo preto */
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo preto com opacidade */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% do topo e centralizado */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Largura do modal */
+  max-width: 300px; /* Largura máxima do modal */
+  text-align: center;
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra */
+  position: relative; /* Para ajuste do layout interno */
+}
+
+#modalResult {
+  font-size: 24px; /* Tamanho da fonte do resultado */
+  margin-bottom: 10px; /* Espaço entre o resultado e o botão */
+}
+
+#playAgainBtn {
+  margin-top: 50px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 18px; /* Tamanho da fonte do botão */
+  display: inline-block; /* Para melhor alinhamento */
+  transition: background-color 0.3s; /* Efeito de transição */
+}
+
+#playAgainBtn:hover {
+  background-color: #0056b3; /* Cor ao passar o mouse */
+}
+
+/* Ajuste de layout do modal */
+.modal-content p {
+  margin: 0; /* Remove margens para texto mais alinhado */
+  line-height: 1.5; /* Espaçamento entre linhas */
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PEDRA, PAPEL, TESOURA</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="img/Icon 3.png" type="image/x-icon">
+    <style>
+        /* Estilização do botão de mute/desmute */
+        #muteButton {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            background-color: #0066cc;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #muteButton:hover {
+            background-color: #004080;
+        }
+    </style>
+  </head>
+
+  <body>
+    <nav class="menu">
+      <div class="navegacao">
+        <a href="https://autplay.framer.website/">Sobre</a>
+        <a href="https://autplay.framer.website/Alunos">Aluno</a>
+        <a href="https://autplay.framer.website/Professor">Professor</a>
+        <a href="https://autplay.framer.website/Pais">Pais</a>
+        <a href="https://autplay.framer.website/Doa%C3%A7%C3%A3o">Doação</a>
+      </div>
+      <div class="logo">
+        <img src="img/Logo sem slogan.png" alt="Logo do Projeto" />
+      </div>
+      <div class="acessibilidade">
+        <button id="zoom">🔍 Zoom</button>
+        <button id="alto-contraste">🔳 Alto Contraste</button>
+        <button id="escala-cinza">⚫ Escala de Cinza</button>
+      </div>
+    </nav>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+     <br> <br> 
+    <h1>PEDRA, PAPEL, TESOURA</h1>
+    <div class="game-container">
+      <div class="players-container">
+        <div class="player">
+          <div class="option" data-value="stone" data-selected="false">
+            <img src="img/pedra.png" alt="pedra" />
+          </div>
+          <div class="option" data-value="paper" data-selected="false">
+            <img src="img/papel.png" alt="papel" />
+          </div>
+          <div class="option" data-value="scissor" data-selected="false">
+            <img src="img/tesoura.png" alt="tesoura" />
+          </div>
+        </div>
+
+        <div class="enemy">
+          <div class="option" data-value="stone" data-selected="false">
+            <img src="img/pedra.png" alt="pedra" />
+          </div>
+          <div class="option" data-value="paper" data-selected="false">
+            <img src="img/papel.png" alt="papel" />
+          </div>
+          <div class="option" data-value="scissor" data-selected="false">
+            <img src="img/tesoura.png" alt="tesoura" />
+          </div>
+        </div>
+      </div>
+
+      <div class="result-container">
+        <span>Comece a jogar</span>
+      </div>
+    </div>
+
+    <audio id="musicaDeFundo" loop>
+      <source src="img/sebuah-kenangan-225732.mp3" type="audio/mpeg">
+      Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <button id="muteButton">🔊</button>
+
+    <script>
+      const musica = document.getElementById("musicaDeFundo");
+      const muteButton = document.getElementById("muteButton");
+
+      muteButton.addEventListener("click", function() {
+        musica.muted = !musica.muted;
+        muteButton.textContent = musica.muted ? "🔇" : "🔊";
+      });
+
+      document.body.addEventListener('click', () => {
+        musica.play().catch(() => {
+          console.log("Autoplay bloqueado. Clique em qualquer lugar para começar o áudio.");
+        });
+      });
+    </script>
+
+    <script src="app.js" defer></script>
+
+    <div id="resultModal" class="modal">
+      <div class="modal-content">
+        <span id="modalResult"></span>
+        <button id="playAgainBtn">Jogar novamente</button>
+      </div>
+    </div>
+
+    <div class="score-container">
+      <div class="player-score">
+        <span>Jogador: </span><span id="playerPoints">0</span>
+      </div>
+      <div class="bot-score">
+        <span>Bot: </span><span id="botPoints">0</span>
+      </div>
+    </div>
+  </body>
+</html>
